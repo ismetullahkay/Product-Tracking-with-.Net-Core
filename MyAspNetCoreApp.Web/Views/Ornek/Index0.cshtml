@@ -1,0 +1,14 @@
+﻿@using MyAspNetCoreApp.Web.Controllers
+@{
+    ViewData["Title"] = "Index0";
+}
+
+@model List<Product2>;
+
+@foreach(var item in Model)
+{
+    <p>@item.Id-@item.Name</p>
+}
+
+<h1>Index0</h1>
+

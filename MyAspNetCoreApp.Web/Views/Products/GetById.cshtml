@@ -1,0 +1,20 @@
+﻿@model ProductViewModel
+
+<a class="btn btn-primary mb-2" asp-controller="Products" asp-action="Index">Ürünler Sayfasına Geri Dön</a>
+<div class="card text-center">
+    <div class="card-header">
+        Ürün(@Model.Name) <br /> @Model.Id
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Description</h5>
+        <p class="card-text">Fiyat: @Model.Price</p>
+        <p class="card-text">Stok: @Model.Stock</p>
+        <p class="card-text">Renk: @Model.Color</p>
+        <p class="card-text">Yayın Süresi: @Model.Expire</p>
+        <p class="card-text">Yayınlansın mı: @Model.isPublished</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+       Eklenme Tarihi: @Model.publishDate
+    </div>
+</div>

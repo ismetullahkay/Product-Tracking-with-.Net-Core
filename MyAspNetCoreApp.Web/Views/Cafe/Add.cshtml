@@ -1,0 +1,25 @@
+﻿@model CafeViewModel
+
+<h1>sa</h1>
+<form asp-controller="Cafe" asp-action="Add" method="post">
+    <div class="mb-3">
+        <label asp-for="masaNo" class="form-label">Masa Numarası</label>
+        <input class="form-control" asp-for="masaNo">
+    </div>
+
+    <div class="mb-3">
+        <select asp-for="urun" asp-items="@ViewBag.selectlist" class="form-select">
+            <option value="">Bir ürün seçiniz</option>
+        </select>
+        <span class="text-danger" asp-validation-for="urun"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="adet" class="form-label">Ürün Adeti</label>
+        <input class="form-control" asp-for="adet">
+    </div>
+
+    
+
+    <button type="submit">Ekle</button>
+</form>

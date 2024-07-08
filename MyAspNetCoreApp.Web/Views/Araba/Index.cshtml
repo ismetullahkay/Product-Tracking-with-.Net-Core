@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Araba>
+
+<h1>Arabalar</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Araç ID</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Çıkış Yılı</th>
+            <th>Fiyat($)</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Marka</td>
+                <td>@item.Model</td>
+                <td>@item.CikisYili</td>
+                <td>@item.fiyat</td>
+                <td>
+                    <a asp-controller="Araba" asp-action="Sil" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+           
+        }
+    </tbody>
+    @await Component.InvokeAsync("ProductList")
+</table>
+ 

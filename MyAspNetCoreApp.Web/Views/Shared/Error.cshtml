@@ -1,0 +1,15 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+
+
+<div class="alert alert-danger">
+    @foreach (var item in Model.Errors)
+    {
+        <div>@item</div>
+    }
+</div>
+<a class="btn btn-primary mb-2" asp-controller="Products" asp-action="Index">Ürünler Sayfasına Geri Dön</a>

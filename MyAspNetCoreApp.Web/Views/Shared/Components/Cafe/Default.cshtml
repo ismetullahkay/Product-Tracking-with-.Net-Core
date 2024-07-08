@@ -1,0 +1,26 @@
+﻿@model CafeViewModel
+<a asp-controller="Cafe" asp-action="Add">Ürün Ekle</a>
+@foreach (var item in ViewBag.mapitem as List<CafeViewModel>)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Masa @item.masaNo</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.urun</h6>
+            <p class="card-text">Adet @item.adet </p>
+            <p class="card-text">@(5*item.adet) ₺ </p>
+            <p class="card-text">
+                @if (item.oturmaTarih==DateTime.MinValue)
+                {
+                    <span>Bu masa şuan boş...</span>
+                }
+                else
+                {
+                    @item.oturmaTarih
+                }
+                </p>
+            <a asp-controller="Cafe" asp-action="UrunGir" asp-route-id="@item.Id">Ürün Gir</a>
+            <a asp-controller="Cafe" asp-action="Remove" asp-route-id="@item.Id">Sıfırla</a>
+            <a asp-controller="Cafe" asp-action="Delete" asp-route-id="@item.Id">Bu masayı Sil</a>
+        </div>
+    </div>
+}

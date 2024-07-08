@@ -1,0 +1,10 @@
+﻿@model CafeViewModel
+<form asp-controller="Cafe" asp-action="Add" method="post">
+    <div class="mb-3">
+        <label asp-for="masaNo" class="form-label">Masa Numarası</label>
+        <input class="form-control" asp-for="masaNo">
+    </div>
+   
+
+    <button type="submit">Ekle</button>
+</form>

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Example Controller ,Index Page</h1>
+<h2>Örnek Controller,İndex Sayfası</h2>
+<h3 style="color:darkblue">27.02.2024</h3>
+<h4 style="color:yellow">13:18</h4>
+
+
+<p>@ViewBag.isim</p>
+
+
+@{
+    var yas = ViewBag.yas;
+    var sehir = ViewBag.sehir;
+}
+<p style="color:red">@yas</p>
+
+<p style="color:green">@sehir</p>
+
+<p>
+    @foreach(var i in ViewBag.KisiBilgi)
+    {
+        @i <br />
+    }
+</p>
+
+<hr />
+
+<p>@ViewData["isim"]</p>
+<p>@ViewData["age"]</p>
+
+
+

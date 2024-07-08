@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<ProductViewModel>
+
+<h1>Ürünler</h1>
+
+<a asp-controller="Products" asp-action="AddProduct">Ürün Ekle</a>
+
+@if (TempData["status"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["status"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>İsim</th>
+            <th>Ürün Görsel</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Renk</th>
+            <th>Yayınlansın mı?</th>
+            <th>Yayında Kalma Süresi</th>
+            <th>Ürün Açıklaması</th>
+            <th>Eklenme Tarihi</th>
+            <th>İşlem</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr class="align-middle">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    @if (!String.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img style="width:100px; height:100px;" src="/images/@(item.ImagePath)"/>
+                    }
+                    else
+                    {
+                        <img style="width:100px; height:100px;" src="~/images/noimage.png" />
+                    }
+                </td>
+                <td>@item.CategoryName </td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>@item.Color</td>
+                <td>
+                   @(item.isPublished ? "Evet" : "Yayınlanmasın Dostum")
+                </td>
+                <td>@item.Expire</td>
+                <td>
+                    @if(item.Description.Length>20)
+                    {
+                        @item.Description.Substring(0,20) <text>...</text>
+                    }
+                    else
+                    {
+                        @item.Description
+                    }
+                </td>
+                <td>@item.publishDate</td>
+
+                
+                <td>
+                    <a class="btn btn-primary" asp-route="getbyID" asp-route-denemeid="@item.Id">Ürüne Git</a> <br />
+                    <a class="btn btn-danger" asp-controller="Products" asp-action="RemoveProduct" asp-route-id="@item.Id">SİL</a> <br />
+                    <a class="btn btn-secondary" asp-controller="Products" asp-action="UpdateProduct" asp-route-id="@item.Id">GÜNCELLE</a>
+                </td>
+                
+
+            </tr>
+
+        }
+    </tbody>
+   
+
+
+</table>
+
+<a asp-controller="blog" asp-action="article" asp-route-name="deneme" asp-route-id="31">Makaleye git</a>
+<a asp-route="Pages" asp-route-page="1" asp-route-pageSize="3">  ürün ver</a> <br />
+<a asp-route="Pages" asp-route-page="2" asp-route-pageSize="3"> ürün ver</a> <br />
+<a asp-route="Pages" asp-route-page="2" asp-route-pageSize="4">ürün ver</a>
+

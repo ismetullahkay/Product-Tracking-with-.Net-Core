@@ -1,0 +1,64 @@
+﻿<h1>Sayfalar</h1>
+
+<h2>page: @ViewBag.page</h2>
+<h3>pageSize: @ViewBag.pageSize</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>İsim</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Renk</th>
+            <th>Yayınlansın mı?</th>
+            <th>Yayında Kalma Süresi</th>
+            <th>Ürün Açıklaması</th>
+            <th>Eklenme Tarihi</th>
+            <th>İşlem</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>@item.Color</td>
+                <td>
+                    @(item.isPublished ? "Evet" : "Yayınlanmasın Dostum")
+                </td>
+                <td>@item.Expire</td>
+                <td>
+                    @if (item.Description.Length > 20)
+                    {
+                        @item.Description.Substring(0, 20) <text>...</text>
+                    }
+                    else
+                    {
+                        @item.Description
+                    }
+                </td>
+                <td>@item.publishDate</td>
+
+
+                <td>
+                    <a asp-controller="Products" asp-action="GetById" asp-route-denemeid="@item.Id">Ürüne Git</a>
+                    <a asp-controller="Products" asp-action="RemoveProduct" asp-route-id="@item.Id">SİL</a>
+                    <a asp-controller="Products" asp-action="UpdateProduct" asp-route-id="@item.Id">GÜNCELLE</a>
+                </td>
+
+
+            </tr>
+
+        }
+    </tbody>
+
+
+
+</table>

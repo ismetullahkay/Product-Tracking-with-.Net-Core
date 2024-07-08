@@ -1,0 +1,12 @@
+﻿@model VisitorViewModel
+
+@foreach(var item in ViewBag.visitorlistVM as List<VisitorViewModel>)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">@item.Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Created</h6>
+            <p class="card-text">@item.Comment</p>
+        </div>
+    </div>
+}
